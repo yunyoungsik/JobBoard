@@ -1,4 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '0sik-job-board.s3.amazonaws.com'
+      }
+    ]
+  }
+};
 
 export default nextConfig;
