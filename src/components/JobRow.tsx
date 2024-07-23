@@ -4,6 +4,7 @@ import type { Job } from '@/models/Job';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
+import Image from 'next/image';
 import Link from 'next/link';
 import TimeAgo from 'react-timeago';
 
@@ -15,17 +16,29 @@ export default function JobRow({ jobDoc }: { jobDoc: Job }) {
       </div>
       <div className="flex grow gap-4">
         <div className="content-center">
-          <img
-            src="https://www.freepnglogos.com/uploads/spotify-logo-png/file-spotify-logo-png-4.png"
-            alt="logo"
-            className="size-12"
-          />
+          {jobDoc.jobIcon && (
+            <Image
+              src={jobDoc.jobIcon}
+              alt="logo"
+              width={50}
+              height={50}
+              className="size-12 rounded-full ring-1 ring-gray-200"
+            />
+          )}
         </div>
 
         <div className="grow sm:flex">
           <div className="grow">
-            <div className="text-gray-500 text-sm">{jobDoc.orgName || undefined}</div>
-            <div className="font-bold text-lg mb-1">{jobDoc.title}</div>
+            <div>
+              <Link href={`/jobs/${jobDoc.orgId}`} className="hover:underline text-gray-500 text-sm">
+                {jobDoc.orgName || '-'}
+              </Link>
+            </div>
+            <div className="font-bold text-lg mb-1">
+              <Link href={`/show/${jobDoc._id}`} className="hover:underline">
+                {jobDoc.title}
+              </Link>
+            </div>
             <div className="text-gray-400 text-sm capitalize">
               {jobDoc.remote} &middot; {jobDoc.city}, {jobDoc.country} &middot; {jobDoc.type}-time
               {jobDoc.isAdmin && (
