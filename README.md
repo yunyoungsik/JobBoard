@@ -1,4 +1,5 @@
 # Job Board
+<img width="100%" src="https://github.com/yunyoungsik/ReactAdminUI/blob/main/client/public/thumnail.png?raw=true" />  
 
 [참고영상](https://youtu.be/grxNze3hjAQ?si=ODakD8vPuI7T_hh-)
 
